@@ -1,0 +1,951 @@
+/* Body Style */
+
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: "Playpen Sans Arabic", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgb(194, 231, 231);
+}
+
+/* Logo Style */
+
+.logo {
+  margin: 10px;
+  color: white;
+}
+
+/* Make logo clickable without losing style */
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navigation Menu Style */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: right;
+}
+
+/* Menu Items Style */
+
+.Menu {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 25px;
+  margin-right: 35px;
+  margin-bottom: 0;
+  text-decoration: none;
+}
+
+.Menu:hover {
+  transition: 0.65s;
+  background-color: #518de7;
+  border-radius: 15px;
+}
+
+/* Login Button Style */
+
+.Login-Button a {
+  color: white;
+  text-decoration: none;
+}
+
+/* User Welcome Text Style */
+#userNameDisplay {
+  color: white;
+  font-weight: bold;
+  margin-right: 15px;
+  display: inline-block;
+  line-height: 30px;
+}
+
+.Login-Button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 410px 4px 5px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Dark / Light mode toggle button */
+.Theme-Toggle-Item {
+  float: left;
+}
+
+.Theme-Toggle-Button {
+  margin: 6px 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: #f9fafb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.Theme-Toggle-Button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.Theme-Toggle-Button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Header Style */
+
+.Header {
+  color: #000000;
+  margin-top: 140px;
+  margin-bottom: 65px;
+}
+
+/* Section Style */
+
+.Section {
+  margin: 25px 250px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Card Style */
+
+.container {
+  position: relative;
+  width: 190px;
+  height: 254px;
+  transition: 200ms;
+}
+
+.container:active {
+  width: 180px;
+  height: 245px;
+}
+
+#card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+}
+
+.title {
+  opacity: 0;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out-out;
+  transition-delay: 100ms;
+  position: absolute;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+}
+
+.tracker:hover ~ #card .title {
+  opacity: 1;
+}
+
+#prompt {
+  bottom: 8px;
+  left: 12px;
+  z-index: 20;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 300ms ease-in-out-out;
+  position: center;
+  max-width: 110px;
+  color: rgb(255, 255, 255);
+}
+
+.tracker {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
+
+.tracker:hover {
+  cursor: pointer;
+}
+
+.tracker:hover ~ #card #prompt {
+  opacity: 0;
+}
+
+.tracker:hover ~ #card {
+  transition: 300ms;
+  filter: brightness(1.1);
+}
+
+.container:hover #card::before {
+  transition: 200ms;
+  content: '';
+  opacity: 80%;
+}
+
+.canvas {
+  perspective: 800px;
+  inset: 0;
+  z-index: 200;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "tr-1 tr-2 tr-3 tr-4 tr-5"
+    "tr-6 tr-7 tr-8 tr-9 tr-10"
+    "tr-11 tr-12 tr-13 tr-14 tr-15"
+    "tr-16 tr-17 tr-18 tr-19 tr-20"
+    "tr-21 tr-22 tr-23 tr-24 tr-25";
+}
+
+#card::before {
+  content: '';
+  background: linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
+  filter: blur(2rem);
+  opacity: 30%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transition: 200ms;
+}
+
+.tr-1 {
+  grid-area: tr-1;
+}
+
+.tr-2 {
+  grid-area: tr-2;
+}
+
+.tr-3 {
+  grid-area: tr-3;
+}
+
+.tr-4 {
+  grid-area: tr-4;
+}
+
+.tr-5 {
+  grid-area: tr-5;
+}
+
+.tr-6 {
+  grid-area: tr-6;
+}
+
+.tr-7 {
+  grid-area: tr-7;
+}
+
+.tr-8 {
+  grid-area: tr-8;
+}
+
+.tr-9 {
+  grid-area: tr-9;
+}
+
+.tr-10 {
+  grid-area: tr-10;
+}
+
+.tr-11 {
+  grid-area: tr-11;
+}
+
+.tr-12 {
+  grid-area: tr-12;
+}
+
+.tr-13 {
+  grid-area: tr-13;
+}
+
+.tr-14 {
+  grid-area: tr-14;
+}
+
+.tr-15 {
+  grid-area: tr-15;
+}
+
+.tr-16 {
+  grid-area: tr-16;
+}
+
+.tr-17 {
+  grid-area: tr-17;
+}
+
+.tr-18 {
+  grid-area: tr-18;
+}
+
+.tr-19 {
+  grid-area: tr-19;
+}
+
+.tr-20 {
+  grid-area: tr-20;
+}
+
+.tr-21 {
+  grid-area: tr-21;
+}
+
+.tr-22 {
+  grid-area: tr-22;
+}
+
+.tr-23 {
+  grid-area: tr-23;
+}
+
+.tr-24 {
+  grid-area: tr-24;
+}
+
+.tr-25 {
+  grid-area: tr-25;
+}
+
+.tr-1:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-2:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-3:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-4:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-5:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-6:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-7:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-8:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-9:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-10:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-11:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-12:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-13:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-14:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-15:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-16:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-17:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-18:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-19:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-20:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-21:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-22:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-23:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-24:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-25:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Group {
+  display: flex;
+  margin: 20px;
+}
+
+/* Logo Style */
+
+.cls-1 {
+  fill: #f15a24;
+  animation: cls1 4s ease infinite both;
+}
+
+@keyframes cls1 {
+  0% {
+    fill: #f15a24;
+  }
+
+  34% {
+    fill: #ed1c24;
+  }
+
+  66% {
+    fill: #f7931e;
+  }
+
+  100% {
+    fill: #f15a24;
+  }
+}
+
+.cls-1,
+.cls-2,
+.cls-3 {
+  stroke-width: 0px;
+}
+
+.cls-2 {
+  fill: #f7931e;
+  animation: cls2 4s ease infinite both;
+}
+
+@keyframes cls2 {
+  0% {
+    fill: #f7931e;
+  }
+
+  34% {
+    fill: #f15a24;
+  }
+
+  66% {
+    fill: #ed1c24;
+  }
+
+  100% {
+    fill: #f7931e;
+  }
+}
+
+.cls-3 {
+  fill: #ed1c24;
+  animation: cls3 4s ease infinite both;
+}
+
+@keyframes cls3 {
+  0% {
+    fill: #ed1c24;
+  }
+
+  34% {
+    fill: #f7931e;
+  }
+
+  66% {
+    fill: #f15a24;
+  }
+
+  100% {
+    fill: #ed1c24;
+  }
+}
+
+.cls-4 {
+  display: none;
+}
+
+#triangle {
+  height: 400px;
+  width: 400px;
+  padding-top: 30px;
+  margin: 0 155px;
+  animation: triangle 4s both infinite;
+}
+
+@keyframes triangle {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+/* Head Style */
+
+.Shadow {
+  color: rgb(0, 137, 216);
+  text-shadow: 4px 5px 7px rgba(0,0,0,0.87);
+}
+
+.BG {
+  Background-color: white;
+  margin-left: 300px;
+  margin-right: 300px;
+  border-radius: 25px;
+}
+
+.Shadow:hover {
+  color: white;
+  text-shadow: 4px 5px 7px rgba(0,0,0,0.87);
+}
+
+.BG:hover {
+  transition: 1s;
+  Background-color: rgb(0, 137, 216);
+  margin-left: 300px;
+  cursor: pointer;
+  margin-right: 300px;
+  border-radius: 25px;
+}
+
+.Contact-Heading:hover,
+.Priority-Heading:hover {
+  color: #007acc;
+}
+
+/* Content Headings */
+
+.Priority-Heading {
+  cursor: pointer;
+}
+
+.Underline-Text {
+  text-decoration: underline;
+}
+
+.Location-Heading {
+  border: 2px solid black;
+}
+
+.Contact-Heading {
+  cursor: pointer;
+}
+
+.Location-Image {
+  margin: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Whatsapp Link */
+
+.Whats-Link {
+  background-color: Green;
+  border: 2px solid green;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.Whats-Link a {
+  text-decoration: none;
+  color: White;
+  font-size: 25px;
+}
+
+.Whats-Link:hover {
+  transition: 0.5s;
+  transform: scale(0.85);
+}
+
+/* Icon Styles */
+
+.whatsapp-icon {
+  font-size: 24px;
+}
+
+.footer-whatsapp-icon {
+  font-size: 24px;
+}
+
+/* Footer Style */
+
+.Footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    position: relative;
+    bottom: 0;
+    margin-top: 100px;
+}
+
+/* =============================
+   Dark Mode Theme
+   ============================= */
+
+:root {
+  --text-color: #ffffff; /* Default to white for all text */
+}
+
+body {
+  color: var(--text-color);
+}
+
+body.dark-mode {
+  background-color: #020617;
+  color: var(--text-color); /* Will remain white via JS */
+}
+
+/* Force white text for theme toggle button */
+.Theme-Toggle-Button {
+  color: #ffffff !important;
+}
+
+/* Override any specific text colors to ensure they remain white */
+.Header {
+  color: #ffffff !important;
+}
+
+body.dark-mode ul {
+  background-color: #020617;
+}
+
+body.dark-mode .logo {
+  color: #e5e7eb;
+}
+
+body.dark-mode .Menu {
+  color: #e5e7eb;
+}
+
+body.dark-mode .Menu:hover {
+  background-color: #1d4ed8;
+}
+
+body.dark-mode .Login-Button {
+  background-color: #22c55e;
+}
+
+body.dark-mode .Header {
+  color: #e5e7eb;
+}
+
+body.dark-mode .Section {
+  background-color: #020617;
+  border: 1px solid #1f2937;
+}
+
+body.dark-mode .Footer {
+  background-color: #020617;
+  color: #9ca3af;
+  border-top: 1px solid #1f2937;
+}
+
+body.dark-mode .Location-Heading {
+  border-color: #1f2937;
+}
+
+body.dark-mode .Location-Image {
+  filter: brightness(0.9);
+}
+
+/* Auto text color adjustment */
+.auto-text-color {
+  /* This class is used by the JavaScript to identify elements that need automatic text color adjustment */
+}
+
+/* =============================
+   Responsive Design
+   ============================= */
+
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  body {
+    font-size: 16px;
+  }
+
+  /* Navigation */
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  ul li {
+    float: none;
+  }
+
+  .logo {
+    margin: 8px 0;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+  }
+
+  .Menu {
+    margin: 0;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .Login-Button {
+    margin: 10px 15px 14px auto;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .Theme-Toggle-Item {
+    float: none;
+    margin: auto 15px;
+  }
+
+  .Theme-Toggle-Button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Header */
+  .Header {
+    margin-top: 100px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* Section */
+  .Section {
+    margin: 20px 50px;
+    padding: 15px;
+  }
+
+  .Group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    margin: 20px 0;
+  }
+
+  #triangle {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .BG {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .Location-Image {
+    margin: 15px auto;
+    max-width: 90%;
+  }
+
+  .Whats-Link a {
+    font-size: 20px;
+  }
+
+  /* Footer */
+  .Footer {
+    margin-top: 60px;
+    padding: 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Navigation */
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  ul li {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo {
+    margin: 8px 0;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  .Menu {
+    margin: 0;
+    padding: 12px;
+  }
+
+  .Login-Button {
+    margin: 10px auto 14px auto;
+    width: 80%;
+    max-width: 260px;
+    display: block;
+  }
+
+  .Theme-Toggle-Item {
+    float: none;
+    margin: 10px auto;
+    width: fit-content;
+  }
+
+  /* Section */
+  .Section {
+    margin: 16px;
+    padding: 12px;
+  }
+
+  .Group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 150px;
+    height: 200px;
+    margin: 15px 0;
+  }
+
+  #triangle {
+    width: 300px;
+    height: 300px;
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  .BG {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .Location-Image {
+    margin: 10px auto;
+    max-width: 95%;
+  }
+
+  .Whats-Link a {
+    font-size: 18px;
+  }
+
+  /* Footer */
+  .Footer {
+    margin-top: 40px;
+    padding: 16px;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

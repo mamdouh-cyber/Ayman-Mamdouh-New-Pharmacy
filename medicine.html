@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيدلية ايمن ممدوح - الادوية</title>
+    <link rel="stylesheet" href="medicine-style.css">
+    <style>
+        body {
+            font-family: 'Playpen Sans Arabic', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        li {
+            float: right;
+        }
+
+        li a, .Theme-Toggle-Button, .Cart-Button, .Login-Button {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        li a:hover, .Theme-Toggle-Button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: white;
+            margin: 0;
+        }
+
+        .logo-link {
+            padding: 0 !important;
+        }
+
+        .Menu {
+            transition: background-color 0.3s;
+            padding: 14px 16px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .Menu:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .Theme-Toggle-Item {
+            margin-right: auto;
+        }
+
+        .Theme-Toggle-Button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            padding: 14px 16px;
+        }
+
+        .Cart-Button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            position: relative;
+            padding: 14px 16px;
+        }
+
+        .Login-Button {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            margin: 8px 0;
+            padding: 8px 16px;
+        }
+
+        .Login {
+            color: white;
+        }
+        
+        .Section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .Section-Header {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .Section-Content {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        .Medicine-Image {
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .medicine-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        .medicine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .medicine-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .Footer {
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        .Footer hr {
+            border: 0;
+            border-top: 1px solid #555;
+            margin: 20px auto;
+            width: 80%;
+        }
+        
+        .user-section-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        #adminPanel {
+            background-color: #f0f0f0;
+            color: black;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        
+        #adminPanel input, #adminPanel button {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        #adminPanel button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #adminPanel button:hover {
+            background: #2980b9;
+        }
+        
+        #loginRequired {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px;
+            color: black;
+            min-height: 50vh;
+        }
+        
+        #loginRequired h2 {
+            color: #e74c3c;
+        }
+        
+        .Login {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .Login:hover {
+            background-color: #45a049;
+        }
+        
+        @media (max-width: 768px) {
+            .medicine-card {
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+            
+            ul {
+                position: relative;
+            }
+            
+            li {
+                float: none;
+            }
+            
+            .Menu, .Theme-Toggle-Button, .Cart-Button, .Login-Button {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+<ul>
+  <li>
+    <a href="index.html" class="logo-link">
+      <h3 class="logo">
+💊صيدلية دكتور ايمن ممدوح الجديدة        
+      </h3>
+    </a>
+  </li>
+  <li>
+    <a href="index.html" class="Menu">
+        الصفحة الرئيسية
+    </a>
+  </li>
+  <li>
+    <a href="services.html" class="Menu">
+        الخدمات
+    </a>
+  </li>
+  <li>
+    <a href="#" class="Menu">
+        الأدوية
+    </a>
+  </li>
+  <li>
+    <a href="about.html" class="Menu">
+        حول
+    </a>
+  </li>
+  <!-- Dark / Light Mode Toggle -->
+  <li class="Theme-Toggle-Item">
+    <button id="themeToggle" class="Theme-Toggle-Button" aria-label="تغيير وضع الموقع">
+      🌙 وضع الليل
+    </button>
+  </li>
+  <!-- Cart Icon -->
+  <li>
+    <button class="Cart-Button" id="cartButton" style="display:none;">
+      <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+      <span id="cartCount">0</span>
+    </button>
+  </li>
+  <!-- User Profile/Notification/Admin Links -->
+  <li id="userSection">
+    <div class="user-section-content">
+      <span id="userNameDisplay"></span>
+      <button id="notificationLink" style="margin-right: 10px; padding: 5px 10px; background-color: #ff9800; color: white; border: none; border-radius: 4px; cursor: pointer; display: none;">
+        <i class="fa fa-bell"></i>
+        إشعارات
+      </button>
+      <button id="adminLink" style="margin-right: 10px; padding: 5px 10px; background-color: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; display: none;">الإدارة</button>
+      <button id="logoutBtn" style="margin-right: 10px; padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; display: none;">تسجيل خروج</button>
+    </div>
+  </li>
+</ul>
+
+<!-- Login Required Message -->
+<div id="loginRequired" style="display:none;">
+  <h2>يجب تسجيل الدخول لعرض الأدوية</h2>
+  <p>يرجى تسجيل الدخول أولاً لشراء الأدوية</p>
+  <a href="login.html" class="Login">تسجيل الدخول</a>
+</div>
+
+<!-- Admin Medicine Addition Form -->
+<div id="adminPanel" style="display:none;">
+  <h3>إضافة دواء جديد (للإدارة فقط)</h3>
+  <form id="addMedicineForm">
+    <input type="text" id="medicineName" placeholder="اسم الدواء" required style="width: 200px; color: black;">
+    <input type="number" id="medicinePrice" placeholder="السعر" step="0.01" required style="width: 100px; color: black;">
+    <input type="number" id="medicineQuantity" placeholder="الكمية" min="1" value="1" required style="width: 100px; color: black;">
+    <label for="medicineImage" style="display: block; margin: 5px 0; color: black;">صورة الدواء:</label>
+        <input type="file" id="medicineImage" accept="image/*" style="width: 300px; color: black;">
+        <div id="imagePreview" style="margin: 10px 0; text-align: center; display: none;">
+            <img id="previewImg" src="" alt="معاينة الصورة" style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+    <button type="submit">إضافة الدواء</button>
+  </form>
+</div>
+  <!-- Medicines Display Area -->
+<div id="medicinesSection" style="display:none;">
+  <!-- Section -->
+  <div class="Section">
+      <h2 class="Section-Header">
+          الادوية
+      </h2>
+      <p class="Section-Content">
+          في صيدلية دكتور ايمن ممدوح الجديدة، نوفر مجموعة واسعة من الأدوية والمستلزمات الصحية لتلبية جميع احتياجاتك العلاجية والوقائية. نسعى جاهدين لتوفير أعلى جودة من المنتجات مع أفضل الأسعار.
+      </p>
+      <p class="Section-Content">
+          كما نقدم خدمات استشارية مجانية مع الصيادلة المؤهلين لمساعدتك في اختيار الأدوية المناسبة واستخدامها بشكل صحيح وآمن.
+      </p>
+      <img src="images.jfif" alt="الأدوية" class="Medicine-Image" style="max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Medicines List -->
+  <div id="medicinesList" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+    <!-- Medicines will be loaded here dynamically -->
+  </div>
+</div>
+  <!-- Footer -->
+<footer class="Footer">
+    &copy; 2026 صيدلية دكتور ايمن ممدوح الجديدة. جميع الحقوق محفوظة.
+    <hr>
+    للتواصل معنا: يمكنك الاتصال بنا عبر <snap><i style="font-size:24px" class="fa">&#xf232;</i></snap> الواتس اب على الرقم <a style="color : white;" href="https://wa.me/+201271109545">201271109545+</a>
+</footer>
+    <script src="script.js"></script>
+    <script>
+        // Check login status and update UI accordingly
+        function checkLoginStatus() {
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            
+            if (user) {
+                // User is logged in
+                document.getElementById('userNameDisplay').textContent = `مرحباً، ${user.username}`;
+                document.getElementById('logoutBtn').style.display = 'block';
+                document.getElementById('notificationLink').style.display = 'block';
+                
+                // Show admin link if user is admin
+                if (user.role === 'admin') {
+                    document.getElementById('adminLink').style.display = 'block';
+                }
+                
+                // Show cart button
+                document.getElementById('cartButton').style.display = 'block';
+                
+                // Show medicines section
+                document.getElementById('medicinesSection').style.display = 'block';
+                document.getElementById('loginRequired').style.display = 'none';
+                
+                // Show admin panel if user is admin
+                if (user.role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block';
+                }
+                
+                // Load medicines
+                loadMedicines();
+                
+                // Update cart count
+                updateCartCount();
+            } else {
+                // User is not logged in
+                document.getElementById('medicinesSection').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('loginRequired').style.display = 'flex';
+                
+                // Hide admin link and logout button if not logged in
+                document.getElementById('logoutBtn').style.display = 'none';
+                document.getElementById('notificationLink').style.display = 'none';
+                document.getElementById('adminLink').style.display = 'none';
+            }
+        }
+        
+        // Load medicines from server
+        async function loadMedicines() {
+            try {
+                const response = await fetch('http://localhost:3000/medicines');
+                const medicines = await response.json();
+                
+                const medicinesList = document.getElementById('medicinesList');
+                medicinesList.innerHTML = '';
+                
+                medicines.forEach(medicine => {
+                    const user = JSON.parse(localStorage.getItem('user') || 'null');
+                    const medicineCard = document.createElement('div');
+                    medicineCard.className = 'medicine-card';
+                    
+                    medicineCard.innerHTML = `
+                        <img src="${medicine.image || '../Images/placeholder.jpg'}" alt="${medicine.name}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;">
+                        <h3 style="color: #333;">${medicine.name}</h3>
+                        <p style="color: #333;">السعر: ${medicine.price} جنيه</p>
+                        <p style="color: #333;">الكمية المتوفرة: ${medicine.quantity}</p>
+                        <button onclick="addToCart(${medicine.id}, '${medicine.name}', ${medicine.price}, ${medicine.quantity})" style="padding: 8px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                            إضافة إلى السلة
+                        </button>
+                        ${user && user.role === 'admin' ? `<button onclick="removeMedicine(${medicine.id})" style="padding: 8px 15px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 5px;">
+                            حذف الدواء
+                        </button>` : ''}
+                    `;
+                    
+                    medicinesList.appendChild(medicineCard);
+                });
+            } catch (error) {
+                console.error('Error loading medicines:', error);
+            }
+        }
+        
+        // Add medicine to cart
+        async function addToCart(id, name, price, availableQuantity) {
+            // Get the latest medicine data from the server to check current available quantity
+            try {
+                const response = await fetch('http://localhost:3000/medicines');
+                const medicines = await response.json();
+                
+                // Find the medicine to get current available quantity
+                const medicine = medicines.find(m => m.id === id);
+                if (!medicine) {
+                    alert('الدواء غير موجود');
+                    return;
+                }
+                
+                const currentAvailableQuantity = medicine.quantity;
+                
+                // Check if we can add another item
+                if (currentAvailableQuantity <= 0) {
+                    alert('الكمية المتوفرة لا تكفي');
+                    return;
+                }
+                
+                let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                
+                // Check if medicine is already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    // Check if adding 1 more would exceed available quantity
+                    if (existingItem.quantity + 1 > currentAvailableQuantity) {
+                        alert('الكمية المتوفرة لا تكفي');
+                        return;
+                    }
+                    existingItem.quantity += 1;
+                } else {
+                    // Check if adding 1 would exceed available quantity
+                    if (1 > currentAvailableQuantity) {
+                        alert('الكمية المتوفرة لا تكفي');
+                        return;
+                    }
+                    cart.push({ id, name, price, quantity: 1 });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                
+                // Decrease the medicine quantity on the server
+                try {
+                    const updatedMedicine = {
+                        ...medicine,
+                        quantity: currentAvailableQuantity - 1
+                    };
+                    
+                    // Update medicine quantity on server
+                    await fetch(`http://localhost:3000/medicines/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(updatedMedicine)
+                    });
+                } catch (updateError) {
+                    console.error('Error updating medicine quantity:', updateError);
+                }
+                
+                loadMedicines(); // Refresh medicine quantities
+                alert('تم إضافة الدواء إلى السلة');
+            } catch (error) {
+                console.error('Error checking medicine availability:', error);
+                alert('حدث خطأ في الاتصال بالخادم');
+            }
+        }
+        
+        // Update cart count display
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+        
+        // Remove medicine from cart
+        async function removeFromCart(id) {
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            
+            // Find the item in the cart
+            const itemIndex = cart.findIndex(item => item.id === id);
+            
+            if (itemIndex !== -1) {
+                // Get the item that will be removed to access its quantity
+                const removedItem = cart[itemIndex];
+                
+                // Remove the item from cart
+                cart.splice(itemIndex, 1);
+                
+                // Save updated cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update cart count display
+                updateCartCount();
+                
+                // Increase the medicine quantity on the server since item was removed from cart
+                try {
+                    // Get current medicine data
+                    const response = await fetch('http://localhost:3000/medicines');
+                    const medicines = await response.json();
+                    
+                    const medicine = medicines.find(m => m.id === id);
+                    if (medicine) {
+                        // Increase quantity by the amount that was in the cart
+                        const updatedMedicine = {
+                            ...medicine,
+                            quantity: medicine.quantity + removedItem.quantity
+                        };
+                        
+                        // Update medicine quantity on server
+                        await fetch(`http://localhost:3000/medicines/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(updatedMedicine)
+                        });
+                    }
+                } catch (updateError) {
+                    console.error('Error updating medicine quantity when removing from cart:', updateError);
+                }
+                
+                // Close the current cart modal and reopen to update the display
+                const existingModal = document.querySelector('div[style*="position: fixed"]');
+                if (existingModal) {
+                    existingModal.remove();
+                }
+                
+                // Show updated cart
+                showCart();
+                
+                // Refresh medicine list to update displayed quantities
+                loadMedicines();
+                
+                alert('تم حذف الدواء من السلة');
+            }
+        }
+        
+        // Remove medicine from the list (admin only)
+        async function removeMedicine(id) {
+            if (!confirm('هل أنت متأكد أنك تريد حذف هذا الدواء؟')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`http://localhost:3000/medicines/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('تم حذف الدواء بنجاح');
+                    loadMedicines(); // Reload medicines list
+                } else {
+                    alert(result.message || 'حدث خطأ أثناء حذف الدواء');
+                }
+            } catch (error) {
+                console.error('Error removing medicine:', error);
+                alert('حدث خطأ في الاتصال بالخادم');
+            }
+        }
+        
+        // Function to show cart (extracted from cartButton click handler)
+        async function showCart() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            
+            if (cart.length === 0) {
+                alert('السلة فارغة');
+                return;
+            }
+            
+            try {
+                // Load medicines to check available quantities
+                const response = await fetch('http://localhost:3000/medicines');
+                const medicines = await response.json();
+                
+                // Create cart modal
+                const cartModal = document.createElement('div');
+                cartModal.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000;';
+                
+                let cartContent = '<div style="background-color: white; color: black; padding: 20px; border-radius: 10px; width: 80%; max-width: 600px; max-height: 80vh; overflow-y: auto;">';
+                cartContent += '<h2 style="color: black;">سلة الشراء</h2><ul style="list-style-type: none; padding: 0;">';
+                
+                cart.forEach(item => {
+                    // Get the medicine from the loaded medicines array to check available quantity
+                    const availableMedicine = medicines.find(m => m.id === item.id);
+                    const availableQuantity = availableMedicine ? availableMedicine.quantity : 0;
+                    cartContent += `<li style="padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; color: black; align-items: center;">
+                        <span>${item.name} × ${item.quantity} (المتوفر: ${availableQuantity})</span>
+                        <span>${(item.price * item.quantity).toFixed(2)} جنيه</span>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})" style="margin-right: 10px;">حذف</button>
+                    </li>`;
+                });
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartContent += `</ul><p style="color: black; text-align: right; font-weight: bold; margin-top: 10px;">الإجمالي: ${total.toFixed(2)} جنيه</p>`;
+            
+            // Get user address for confirmation
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            if (user) {
+                cartContent += `<p style="color: black;">العنوان: ${user.address}</p>`;
+                cartContent += '<div id="phoneInputContainer" style="margin: 15px 0; color: black;">';
+                cartContent += '<label for="phoneNumber" style="display: block; margin-bottom: 5px;">رقم الهاتف:</label>';
+                cartContent += '<input type="tel" id="phoneNumber" placeholder="أدخل رقم هاتفك" style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; color: black;" required>';
+                cartContent += '</div>';
+                cartContent += '<div id="locationLinkInput" style="margin: 15px 0; color: black;">';
+                cartContent += '<label for="locationLink" style="display: block; margin-bottom: 5px;">رابط الموقع (اختياري):</label>';
+                cartContent += '<input type="url" id="locationLink" placeholder="https://maps.app.goo.gl/..." style="padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; color: black;">';
+                cartContent += '<small style="color: #ccc; display: block; margin-top: 5px;">يمكنك لصق رابط خريطة جوجل هنا</small>';
+                cartContent += '</div>';
+                cartContent += '<button id="confirmOrderBtn" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">تأكيد الطلب</button>';
+            }
+            
+            cartContent += '<button id="closeCartBtn" style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; margin-top: 10px;">إغلاق</button></div>';
+            
+            cartModal.innerHTML = cartContent;
+            document.body.appendChild(cartModal);
+            
+            // Add event listeners to buttons
+            document.getElementById('confirmOrderBtn').addEventListener('click', async function() {
+                if (!user) {
+                    alert('يجب تسجيل الدخول لتأكيد الطلب');
+                    return;
+                }
+                
+                // Get phone number from input
+                const phoneInput = document.getElementById('phoneNumber');
+                if (!phoneInput || !phoneInput.value.trim()) {
+                    alert('الرجاء إدخال رقم الهاتف');
+                    return;
+                }
+                
+                const phoneNumber = phoneInput.value.trim();
+                const locationLinkInput = document.getElementById('locationLink');
+                const locationLink = locationLinkInput ? locationLinkInput.value.trim() : null;
+                
+                try {
+                    const response = await fetch('http://localhost:3000/orders', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            medicines: cart,
+                            address: user.address,
+                            user: user.username,
+                            phoneNumber: phoneNumber,
+                            locationLink: locationLink || null
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (response.ok) {
+                        alert('تم إرسال الطلب بنجاح');
+                        localStorage.removeItem('cart'); // Clear cart after successful order
+                        updateCartCount();
+                        document.body.removeChild(cartModal);
+                        loadMedicines(); // Refresh medicine quantities
+                    } else {
+                        alert(result.message || 'حدث خطأ أثناء إرسال الطلب');
+                    }
+                } catch (error) {
+                    console.error('Error placing order:', error);
+                    alert('حدث خطأ في الاتصال بالخادم');
+                }
+            });
+            
+            document.getElementById('closeCartBtn').addEventListener('click', function() {
+                document.body.removeChild(cartModal);
+            });
+        } catch (error) {
+            console.error('Error loading medicines for cart display:', error);
+            alert('حدث خطأ في تحميل معلومات الأدوية');
+            return; // Exit the function if there's an error
+        }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('cart');
+            window.location.href = 'login.html';
+        }
+        
+        // Add event listeners for admin link and logout button
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('adminLink').addEventListener('click', function() {
+            window.location.href = 'admin.html';
+        });
+        document.getElementById('notificationLink').addEventListener('click', function() {
+            window.location.href = 'notification.html';
+        });
+        
+        // Handle image preview
+        document.getElementById('medicineImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('previewImg').src = event.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Add medicine form submission
+        document.getElementById('addMedicineForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('medicineName').value;
+            const price = document.getElementById('medicinePrice').value;
+            const quantity = document.getElementById('medicineQuantity').value;
+            
+            // Get image file and convert to data URL
+            const imageFile = document.getElementById('medicineImage').files[0];
+            let image = null;
+            
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = async function(event) {
+                    image = event.target.result;
+                    await submitMedicine(name, price, image, quantity);
+                };
+                reader.onerror = function() {
+                    alert('حدث خطأ أثناء قراءة الملف');
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                // If no image selected, use a default image
+                image = '../Images/placeholder.jpg';
+                await submitMedicine(name, price, image, quantity);
+            }
+        });
+        
+        // Function to submit medicine data
+        async function submitMedicine(name, price, image, quantity) {
+            try {
+                const response = await fetch('http://localhost:3000/medicines', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, price, quantity, image })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('تم إضافة الدواء بنجاح');
+                    document.getElementById('addMedicineForm').reset();
+                    document.getElementById('imagePreview').style.display = 'none';
+                    document.getElementById('previewImg').src = '';
+                    loadMedicines(); // Reload medicines list
+                } else {
+                    alert(result.message || 'حدث خطأ أثناء إضافة الدواء');
+                }
+            } catch (error) {
+                console.error('Error adding medicine:', error);
+                alert('حدث خطأ في الاتصال بالخادم');
+            }
+        }
+        
+        // Show cart when cart button is clicked
+        document.getElementById('cartButton').addEventListener('click', function() {
+            showCart();
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+    </script>
+    <script>
+        // Show religious message only once per visit
+        if (!localStorage.getItem('religionAlertShown')) {
+            alert('صلي على سيدنا محمد');
+            localStorage.setItem('religionAlertShown', 'true');
+        }
+    </script>
+</body>
+</html>

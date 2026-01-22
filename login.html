@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans+Arabic:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيدلية ايمن ممدوح - تسجيل الدخول</title>
+    <link rel="stylesheet" href="login-style.css">
+    <style>
+        body {
+            font-family: 'Playpen Sans Arabic', cursive;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            height: 100vh;
+            overflow: hidden;
+            direction: rtl;
+        }
+        
+        .background {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        }
+        
+        form {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            font-size: 1.8em;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: white;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            padding-left: 40px; /* Space for the eye icon */
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+
+        .Link {
+            text-align: center;
+            margin-top: 15px;
+            color: white;
+        }
+        
+        .Link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .Link a:hover {
+            text-decoration: underline;
+        }
+        
+        .Back-Button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .Back-Button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .Back-Button a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Animation for the shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            animation: float 8s infinite linear;
+        }
+        
+        .shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            left: -100px;
+            animation-duration: 10s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: -80px;
+            right: -80px;
+            animation-duration: 8s;
+            animation-direction: reverse;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        
+        <form>
+            <h3>تسجيل الدخول</h3>
+            <label for="username">المستخدم</label>
+            <input type="text" placeholder="الايميل او رقم الهاتف" id="username" />
+
+            <label for="password">باسورد</label>
+            <div style="position: relative;">
+                <input type="password" placeholder="باسورد" id="password" />
+                <span id="togglePassword" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #777;">
+                    👁️
+                </span>
+            </div>
+
+            <button>تسجيل الدخول</button>
+            <!-- The Resigter Link -->
+            <p class="Link">
+                هل ليس لديك حساب؟ <a href="Resigter.html">انشاء حساب الان</a>
+            </p>
+        </form>
+    </div>
+    
+    <button class="Back-Button">
+        <a href="index.html">الرئيسية</a>
+    </button>
+    <script src="Login.js"></script>
+    <script>
+        // Show religious message only once per visit
+        if (!localStorage.getItem('religionAlertShown')) {
+            alert('صلي على سيدنا محمد');
+            localStorage.setItem('religionAlertShown', 'true');
+        }
+    
+        // Toggle password visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+            
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function() {
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        togglePassword.textContent = '🙈';
+                    } else {
+                        passwordInput.type = 'password';
+                        togglePassword.textContent = '👁️';
+                    }
+                });
+            }
+            
+            // Event listener for login form
+            const loginForm = document.querySelector('form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    
+                    const result = await login(username, password);
+                    
+                    if (result.success) {
+                        alert('تم تسجيل الدخول بنجاح!');
+                        
+                        // Redirect based on user role
+                        const user = result.user;
+                        if (user.role === 'admin') {
+                            window.location.href = 'admin.html'; // Admin goes to admin panel
+                        } else {
+                            window.location.href = 'medicine.html'; // Regular users go to medicine page
+                        }
+                    } else {
+                        alert(result.message || 'اسم المستخدم او كلمة المرور غير صحيحة');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
